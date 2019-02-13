@@ -5,7 +5,7 @@ import pickle
 
 home = os.path.dirname(os.getcwd())
 
-wb = op.load_workbook(home + '\\Dataset\\Full Attribute Scores\\demographic & others labels\\demographic-others-labels.xlsx')
+wb = op.load_workbook(home + '\\Dataset\\demographic-others-labels.xlsx')
 ws = wb[wb.sheetnames[1]]
 
 races = []
