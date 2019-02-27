@@ -9,10 +9,10 @@ def load_train_image(filename):
     home = os.path.dirname(os.getcwd())
 
     img = Image.open(home + "\\Dataset\\Face Images\\" + filename)
-    img.resize((192, 256))
-    img = np.array(img)
+    img = img.resize((96, 128))
+    arimg = np.array(img)
 
-    return img
+    return arimg
 
 
 def load_all_train_images():
