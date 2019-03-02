@@ -18,39 +18,70 @@ def create_dataset():
     fopen.close()
 
     dataset = []
-    conv_race_list = ['None', 'Caucasoid', 'Negroid', 'Mongoloid', 'Mongoloid', 'Australoid', 'Caucasoid']
+    conv_race_list = ['None', 'Caucasoid', 'Negroid', 'Mongoloid', 'Mongoloid', 'Mongoloid', 'Caucasoid']
 
     for img, race in zip(imgs, races):
         if race != 0:
             dataset.append([img, conv_race_list[race]])
 
-    fopen = open(home + "\\Attributes\\dataset.dat", mode='wb')
-    pickle.dump(dataset, fopen)
+    random.shuffle(dataset)
+
+    train, test = mt.split_test_train(dataset)
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='wb')
+    pickle.dump(train, fopen)
+    fopen.close()
+
+    fopen = open(home + "\\Attributes\\test_dataset.dat", mode='wb')
+    pickle.dump(test, fopen)
+    fopen.close()
+
+    race_list = ['Caucasoid', 'Negroid', 'Mongoloid']
+    fopen = open(home + "\\Attributes\\race_list.dat", mode='wb')
+    pickle.dump(race_list, fopen)
     fopen.close()
 
 
 def scenario1():
     home = os.path.dirname(os.getcwd())
 
-    fopen = open(home + "\\Attributes\\dataset.dat", mode='rb')
-    dataset = pickle.load(fopen)
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
     fopen.close()
-
-    random.shuffle(dataset)
-
-    train, test = mt.split_test_train(dataset)
-
-    print(len(train))
-    print(len(test))
 
     import matplotlib.pyplot as plt
     for i in range(9):
         plt.subplot(3, 3, i+1)
         plt.axis('off')
-        plt.imshow(dataset[i][0], cmap='gray')
+        plt.imshow(train[i][0], cmap='gray')
 
     model = cl.CNN_model_1(3)
     cl.train_model(train, model, 0)
+
+    model.save(home + "\\Attributes\\CNN_scenario1.h5")
+
+    plt.show()
+
+
+def scenario2():
+    home = os.path.dirname(os.getcwd())
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
+    fopen.close()
+
+    train = mt.convert_to_grayscale(train)
+
+    import matplotlib.pyplot as plt
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.axis('off')
+        plt.imshow(train[i][0], cmap='gray')
+
+    model = cl.CNN_model_1(3)
+    cl.train_model(train, model, 0)
+
+    model.save(home + "\\Attributes\\CNN_scenario2.h5")
 
     plt.show()
 

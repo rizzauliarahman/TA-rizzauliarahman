@@ -1,3 +1,8 @@
+import os, sys
+
+home = os.path.dirname(os.getcwd())
+sys.path.insert(0, home + '\\Preprocess')
+
 import keras
 import tensorflow as tf
 import numpy as np
@@ -7,6 +12,8 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.optimizers import Adam, SGD, Adamax, Nadam
 from sklearn.model_selection import StratifiedKFold
 import os
+import pickle
+import methods as mt
 
 
 def CNN_model_1(filter_size: int):
@@ -27,18 +34,22 @@ def CNN_model_1(filter_size: int):
     model.add(BatchNormalization())
     model.add(Dropout(0.5))
     model.add(Activation('relu'))
-    model.add(Dense(4, activation='softmax'))
+    model.add(Dense(3, activation='softmax'))
 
     return model
 
 
 def train_model(dataset, model, optimizer: int):
+    home = os.path.dirname(os.getcwd())
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
     x_train = np.array([data[0] for data in dataset])
     y_train = [data[1] for data in dataset]
 
-    l_name = list(set(y_train))
+    fopen = open(home + "\\Attributes\\race_list.dat", mode='rb')
+    l_name = pickle.load(fopen)
+    fopen.close()
+
     y_train = [l_name.index(race) for race in y_train]
 
     kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=7)
@@ -64,3 +75,32 @@ def train_model(dataset, model, optimizer: int):
     model.save('coba_model.h5')
 
     print("Average Folds Accuracy %.2f%% (+/- %.2f%%)" % (np.mean(csvscores), np.std(csvscores)))
+
+
+def test_model(dataset, model, idx_model):
+    home = os.path.dirname(os.getcwd())
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+    x_test = np.array([data[0] for data in dataset])
+    y_test = [data[1] for data in dataset]
+
+    fopen = open(home + "\\Attributes\\race_list.dat", mode='rb')
+    l_name = pickle.load(fopen)
+    fopen.close()
+
+    txtopen = open(home + "\\Results\\cnn_model_" + repr(idx_model) + ".txt", mode='w')
+
+    y_test = [l_name.index(race) for race in y_test]
+
+    classes = model.predict(x_test, verbose=0)
+
+    acc = mt.count_accuracy(classes, y_test)
+
+    txtopen.write("\nCNN MODEL" + repr(idx_model) + "\n")
+    model.summary(print_fn=lambda x: txtopen.write(x + '\n'))
+    txtopen.write("\n=================================================================\n")
+    txtopen.write("=================================================================\n")
+
+    txtopen.write("\nModel accuracy: %.3f%%\n\n" % (acc * 100))
+
+    mt.confusion_matrix(classes, y_test, l_name, txtopen)
