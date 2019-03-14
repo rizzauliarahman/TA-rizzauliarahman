@@ -96,11 +96,10 @@ def test_model(dataset, model, idx_model):
 
     acc = mt.count_accuracy(classes, y_test)
 
-    txtopen.write("\nCNN MODEL" + repr(idx_model) + "\n")
+    txtopen.write("\nCNN MODEL " + repr(idx_model) + "\n")
     model.summary(print_fn=lambda x: txtopen.write(x + '\n'))
     txtopen.write("\n=================================================================\n")
-    txtopen.write("=================================================================\n")
-
-    txtopen.write("\nModel accuracy: %.3f%%\n\n" % (acc * 100))
 
     mt.confusion_matrix(classes, y_test, l_name, txtopen)
+
+    txtopen.write("\nModel accuracy: %.3f%%\n\n" % (acc * 100))

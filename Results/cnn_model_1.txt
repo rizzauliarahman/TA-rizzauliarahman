@@ -1,5 +1,5 @@
 
-CNN MODEL1
+CNN MODEL 1
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -37,47 +37,18 @@ Non-trainable params: 1,024
 _________________________________________________________________
 
 =================================================================
-=================================================================
+====================== CONFUSION MATRIX =========================
+
+|                     |   Actual    |  Actual   |   Actual    |
+|                     |  Caucasoid  |  Negroid  |  Mongoloid  |
+|---------------------+-------------+-----------+-------------|
+| Predicted Caucasoid |     179     |     2     |     17      |
+| Predicted Negroid   |     16      |    208    |     13      |
+| Predicted Mongoloid |     12      |     1     |     166     |
+
+Precision: 0.903
+Recall: 0.899
+F1-Score: 0.899
 
 Model accuracy: 90.065%
-
-============ CONFUSION MATRIX ===============
-=========================================
-Class : CAUCASOID
-
-|             |   Actual T |   Actual F |
-|-------------+------------+------------|
-| Predicted T |        179 |         19 |
-| Predicted F |         28 |        388 |
-
-Precision: 0.904
-Recall: 0.865
-F1-Score: 0.884
-Accuracy: 92.345%
-
-=========================================
-Class : NEGROID
-
-|             |   Actual T |   Actual F |
-|-------------+------------+------------|
-| Predicted T |        208 |         29 |
-| Predicted F |          3 |        374 |
-
-Precision: 0.878
-Recall: 0.986
-F1-Score: 0.929
-Accuracy: 94.788%
-
-=========================================
-Class : MONGOLOID
-
-|             |   Actual T |   Actual F |
-|-------------+------------+------------|
-| Predicted T |        166 |         13 |
-| Predicted F |         30 |        405 |
-
-Precision: 0.927
-Recall: 0.847
-F1-Score: 0.885
-Accuracy: 92.997%
 
