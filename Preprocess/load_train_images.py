@@ -6,10 +6,8 @@ import pickle
 
 
 def load_train_image(filename):
-    home = os.path.dirname(os.getcwd())
-
-    img = Image.open(home + "\\Dataset\\Face Images\\" + filename)
-    img = img.resize((96, 128))
+    img = Image.open(filename)
+    img = img.resize((96, 96))
     arimg = np.array(img)
 
     return arimg

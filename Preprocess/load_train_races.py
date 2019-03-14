@@ -1,19 +1,22 @@
-import openpyxl as op
+import random
 import os
 import pickle
 
-
 home = os.path.dirname(os.getcwd())
 
-wb = op.load_workbook(home + '\\Dataset\\demographic-others-labels.xlsx')
-ws = wb[wb.sheetnames[1]]
-
-races = []
 img_names = []
+races = []
 
-for row in range(2, ws.max_row+1):
-    img_names.append(ws.cell(row=row, column=1).value)
-    races.append(ws.cell(row=row, column=19).value)
+for root, dirs, files in os.walk(home + "\\Dataset"):
+    for d in dirs:
+        filenames = [(home + "\\Dataset\\" + d + "\\" + f) for f in os.listdir(home + "\\Dataset\\" + d) if
+                     os.path.isfile(home + "\\Dataset\\" + d + "\\" + f)]
+
+        for f in filenames:
+            ran = random.randint(1, len(filenames))
+            if ran <= 2000:
+                img_names.append(f)
+                races.append(d)
 
 svfile_races = open(home + '\\Attributes\\races.dat', mode='wb')
 svfile_imgs = open(home + '\\Attributes\\imgs.dat', mode='wb')

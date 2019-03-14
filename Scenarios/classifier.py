@@ -19,7 +19,7 @@ import methods as mt
 def CNN_model_1(filter_size: int):
     model = Sequential()
 
-    model.add(Conv2D(8, (filter_size, filter_size), activation='relu', input_shape=(128, 96, 3)))
+    model.add(Conv2D(8, (filter_size, filter_size), activation='relu', input_shape=(96, 96, 3)))
     model.add(Conv2D(16, (filter_size, filter_size), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.25))

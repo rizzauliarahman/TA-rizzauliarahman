@@ -18,11 +18,9 @@ def create_dataset():
     fopen.close()
 
     dataset = []
-    conv_race_list = ['None', 'Caucasoid', 'Negroid', 'Mongoloid', 'Mongoloid', 'Mongoloid', 'Caucasoid']
 
     for img, race in zip(imgs, races):
-        if race != 0:
-            dataset.append([img, conv_race_list[race]])
+        dataset.append([img, race])
 
     random.shuffle(dataset)
 
