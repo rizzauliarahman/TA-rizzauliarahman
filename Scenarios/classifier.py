@@ -39,6 +39,24 @@ def CNN_model_1(filter_size: int):
     return model
 
 
+def CNN_model_2(filter_size: int):
+    model = Sequential()
+
+    model.add(Conv2D(16, (filter_size, filter_size), activation='relu', input_shape=(96, 96, 3)))
+    model.add(Conv2D(32, (filter_size, filter_size), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.25))
+
+    model.add(Flatten())
+    model.add(Dense(256, activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Dropout(0.5))
+    model.add(Activation('relu'))
+    model.add(Dense(3, activation='softmax'))
+
+    return model
+
+
 def train_model(dataset, model, optimizer: int):
     home = os.path.dirname(os.getcwd())
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'

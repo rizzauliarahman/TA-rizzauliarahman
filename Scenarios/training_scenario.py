@@ -84,5 +84,47 @@ def scenario2():
     plt.show()
 
 
+def scenario3():
+    home = os.path.dirname(os.getcwd())
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
+    fopen.close()
+
+    import matplotlib.pyplot as plt
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.axis('off')
+        plt.imshow(train[i][0], cmap='gray')
+
+    model = cl.CNN_model_1(5)
+    cl.train_model(train, model, 0)
+
+    model.save(home + "\\Attributes\\CNN_scenario3.h5")
+
+    plt.show()
+
+
+def scenario4():
+    home = os.path.dirname(os.getcwd())
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
+    fopen.close()
+
+    import matplotlib.pyplot as plt
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.axis('off')
+        plt.imshow(train[i][0], cmap='gray')
+
+    model = cl.CNN_model_2(3)
+    cl.train_model(train, model, 0)
+
+    model.save(home + "\\Attributes\\CNN_scenario4.h5")
+
+    plt.show()
+
+
 if __name__ == '__main__':
-    scenario1()
+    scenario4()

@@ -37,5 +37,29 @@ def scenario2():
     cl.test_model(test, model, 2)
 
 
+def scenario3():
+    home = os.path.dirname(os.getcwd())
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+    fopen = open(home + "\\Attributes\\test_dataset.dat", mode='rb')
+    test = pickle.load(fopen)
+    fopen.close()
+
+    model = keras.models.load_model(home + "\\Attributes\\CNN_scenario3.h5")
+    cl.test_model(test, model, 3)
+
+
+def scenario4():
+    home = os.path.dirname(os.getcwd())
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+    fopen = open(home + "\\Attributes\\test_dataset.dat", mode='rb')
+    test = pickle.load(fopen)
+    fopen.close()
+
+    model = keras.models.load_model(home + "\\Attributes\\CNN_scenario4.h5")
+    cl.test_model(test, model, 4)
+
+
 if __name__ == '__main__':
-    scenario1()
+    scenario4()

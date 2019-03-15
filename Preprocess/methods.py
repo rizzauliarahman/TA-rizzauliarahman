@@ -10,7 +10,7 @@ def convert_to_grayscale(dataset):
     for data in dataset:
         conv = Image.fromarray(data[0]).convert('L')
         conv = np.array(conv)
-        conv = np.array([conv, conv, conv]).reshape((3, 128, 96)).transpose(1, 2, 0)
+        conv = np.array([conv, conv, conv]).reshape((3, 96, 96)).transpose(1, 2, 0)
         new_dataset.append([conv, data[1]])
 
     return new_dataset
