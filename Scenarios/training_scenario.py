@@ -7,6 +7,7 @@ import methods as mt
 import pickle
 import random
 import classifier as cl
+import time
 
 
 def create_dataset():
@@ -53,10 +54,8 @@ def scenario1():
         plt.axis('off')
         plt.imshow(train[i][0], cmap='gray')
 
-    model = cl.CNN_model_1(3)
-    cl.train_model(train, model, 0)
-
-    model.save(home + "\\Attributes\\CNN_scenario1.h5")
+    model = cl.CNN_model_1(7)
+    cl.train_model(train, model, 0, 4)
 
     plt.show()
 
@@ -77,35 +76,12 @@ def scenario2():
         plt.imshow(train[i][0], cmap='gray')
 
     model = cl.CNN_model_1(3)
-    cl.train_model(train, model, 0)
-
-    model.save(home + "\\Attributes\\CNN_scenario2.h5")
+    cl.train_model(train, model, 0, 2)
 
     plt.show()
 
 
-def scenario3():
-    home = os.path.dirname(os.getcwd())
-
-    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
-    train = pickle.load(fopen)
-    fopen.close()
-
-    import matplotlib.pyplot as plt
-    for i in range(9):
-        plt.subplot(3, 3, i + 1)
-        plt.axis('off')
-        plt.imshow(train[i][0], cmap='gray')
-
-    model = cl.CNN_model_1(5)
-    cl.train_model(train, model, 0)
-
-    model.save(home + "\\Attributes\\CNN_scenario3.h5")
-
-    plt.show()
-
-
-def scenario4():
+def scenario5():
     home = os.path.dirname(os.getcwd())
 
     fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
@@ -119,12 +95,67 @@ def scenario4():
         plt.imshow(train[i][0], cmap='gray')
 
     model = cl.CNN_model_2(3)
-    cl.train_model(train, model, 0)
+    cl.train_model(train, model, 0, 5)
 
-    model.save(home + "\\Attributes\\CNN_scenario4.h5")
+    plt.show()
+
+
+def scenario6():
+    home = os.path.dirname(os.getcwd())
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
+    fopen.close()
+
+    import matplotlib.pyplot as plt
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.axis('off')
+        plt.imshow(train[i][0], cmap='gray')
+
+    model = cl.CNN_model_3(3)
+    cl.train_model(train, model, 0, 6)
+
+    plt.show()
+
+
+def scenario7():
+    home = os.path.dirname(os.getcwd())
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
+    fopen.close()
+
+    import matplotlib.pyplot as plt
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.axis('off')
+        plt.imshow(train[i][0], cmap='gray')
+
+    model = cl.CNN_model_4(3)
+    cl.train_model(train, model, 0, 7)
+
+    plt.show()
+
+
+def scenario8():
+    home = os.path.dirname(os.getcwd())
+
+    fopen = open(home + "\\Attributes\\train_dataset.dat", mode='rb')
+    train = pickle.load(fopen)
+    fopen.close()
+
+    import matplotlib.pyplot as plt
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.axis('off')
+        plt.imshow(train[i][0], cmap='gray')
+
+    model = cl.CNN_model_5(3)
+    cl.train_model(train, model, 0, 8)
 
     plt.show()
 
 
 if __name__ == '__main__':
-    scenario4()
+    scenario8()

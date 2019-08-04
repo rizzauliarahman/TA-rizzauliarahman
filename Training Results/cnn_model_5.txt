@@ -1,0 +1,23 @@
+
+CNN MODEL 5
+
+TRAINING PERFORMANCE
+Number of folds: 10
+Number of epochs: 10
+Batch size: 20
+Optimizer: Adam
+Time elapsed for training: 0 hour(s), 10 minute(s), 26 second(s)
+
+Folds Performance:
+Fold-1, 4861 Training data, 541 Validation data, Accuracy: 86.69%
+Fold-2, 4861 Training data, 541 Validation data, Accuracy: 94.09%
+Fold-3, 4861 Training data, 541 Validation data, Accuracy: 96.30%
+Fold-4, 4861 Training data, 541 Validation data, Accuracy: 97.41%
+Fold-5, 4861 Training data, 541 Validation data, Accuracy: 98.71%
+Fold-6, 4862 Training data, 540 Validation data, Accuracy: 99.63%
+Fold-7, 4862 Training data, 540 Validation data, Accuracy: 96.67%
+Fold-8, 4862 Training data, 540 Validation data, Accuracy: 100.00%
+Fold-9, 4863 Training data, 539 Validation data, Accuracy: 99.81%
+Fold-10, 4864 Training data, 538 Validation data, Accuracy: 99.44%
+
+Average Folds Accuracy 96.88% (+/- 3.85%)

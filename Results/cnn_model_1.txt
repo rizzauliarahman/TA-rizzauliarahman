@@ -1,5 +1,5 @@
 
-CNN MODEL 1
+CNN MODEL 2
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -42,13 +42,13 @@ _________________________________________________________________
 |                     |   Actual    |  Actual   |   Actual    |
 |                     |  Caucasoid  |  Negroid  |  Mongoloid  |
 |---------------------+-------------+-----------+-------------|
-| Predicted Caucasoid |     179     |     2     |     17      |
-| Predicted Negroid   |     16      |    208    |     13      |
-| Predicted Mongoloid |     12      |     1     |     166     |
+| Predicted Caucasoid |     175     |     6     |     11      |
+| Predicted Negroid   |     13      |    201    |      6      |
+| Predicted Mongoloid |     19      |     4     |     179     |
 
-Precision: 0.903
-Recall: 0.899
-F1-Score: 0.899
+Precision: 0.904
+Recall: 0.904
+F1-Score: 0.903
 
-Model accuracy: 90.065%
+Model accuracy: 90.391%
 
