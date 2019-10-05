@@ -1,6 +1,7 @@
 import os, sys
 home = os.path.dirname(os.getcwd())
 sys.path.insert(0, home + '\\Preprocess')
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import load_train_images as lti
 import methods as mt
@@ -158,4 +159,4 @@ def scenario8():
 
 
 if __name__ == '__main__':
-    scenario8()
+    scenario7()

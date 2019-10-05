@@ -233,7 +233,7 @@ def test_model(dataset, model, idx_model):
     txtopen.close()
 
 
-def test_img(img, model, idx_model):
+def test_img(img, model):
     home = os.path.dirname(os.getcwd())
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
@@ -248,4 +248,8 @@ def test_img(img, model, idx_model):
 
     classes = model.predict(x_test, verbose=0)
 
-    print(l_name[np.argmax(classes[0])])
+    # print(l_name[np.argmax(classes[0])])
+    for i in range(len(classes[0])):
+        print("%s: %.2f%%" % (l_name[i], (classes[0][i] * 100)))
+
+    print('')
