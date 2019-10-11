@@ -17,7 +17,7 @@ import methods as mt
 import matplotlib.pyplot as plt
 import time
 
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 
 def CNN_model_1(filter_size: int):
