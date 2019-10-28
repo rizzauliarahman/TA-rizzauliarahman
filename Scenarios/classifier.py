@@ -17,7 +17,7 @@ import methods as mt
 import matplotlib.pyplot as plt
 import time
 
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 
 def CNN_model_1(filter_size: int):
@@ -248,7 +248,7 @@ def test_img(img, model):
 
     classes = model.predict(x_test, verbose=0)
 
-    # print(l_name[np.argmax(classes[0])])
+    print("Predicted : ", l_name[np.argmax(classes[0])])
     for i in range(len(classes[0])):
         print("%s: %.2f%%" % (l_name[i], (classes[0][i] * 100)))
 

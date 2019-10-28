@@ -158,5 +158,5 @@ def scenario8():
     plt.show()
 
 
-if __name__ == '__main__':
-    scenario7()
+# if __name__ == '__main__':
+#     scenario7()
