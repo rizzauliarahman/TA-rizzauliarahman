@@ -248,7 +248,7 @@ def test_img(img, model):
 
     classes = model.predict(x_test, verbose=0)
 
-    print("Predicted : ", l_name[np.argmax(classes[0])])
+    print("Predicted : ", l_name[np.argmax(classes[0])], "\n")
     for i in range(len(classes[0])):
         print("%s: %.2f%%" % (l_name[i], (classes[0][i] * 100)))
 
